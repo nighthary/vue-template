@@ -1,18 +1,5 @@
 const webpack = require('webpack')
 const path = require('path')
-const utils = require('./build/utils.js')
-
-const env = utils.getEnv()
-const getConfig = require('./build/config').getConfig
-let config
-
-if (env === 'local') {
-  config = getConfig(env)
-} else if (env === 'dev') {
-  config = getConfig(env)
-} else {
-  config = getConfig(env)
-}
 
 function resolve(dir) {
   return path.join(__dirname, dir)
@@ -61,13 +48,10 @@ const cdn = {
 }
 
 // 基础路径 发布之前要先修改这里
-// const baseUrl = process.env.VUE_APP_BASEURL
+const baseUrl = process.env.VUE_APP_BASEURL
 module.exports = {
-  publicPath: config.assetsPublicPath,
-  assetsDir: config.assetsSubDirectory,
-  outputDir: config.outputDir,
-  // publicPath: baseUrl,
-  // outputDir: process.env.outputDir,
+  publicPath: baseUrl,
+  outputDir: process.env.outputDir,
   productionSourceMap: false,
   // TODO:是否开启待定
   // lintOnSave: process.env.NODE_ENV !== 'production',
@@ -90,41 +74,6 @@ module.exports = {
       jQuery: 'jquery',
       'windows.jQuery': 'jquery'
     }))
-
-    config.plugins.push(function () {
-      // 数据处理 用于生成 webpackMap
-      this.plugin('done', function (map) {
-        var webpackMap = {}
-        // 调用 webpack map toJson 生成 jsonMap
-        map = map.toJson()
-
-        const entrypoints = map.entrypoints
-        Object.keys(map.entrypoints).forEach(pageName => {
-          if(!entrypoints[pageName].chunks.length) return
-          const pageInfo = entrypoints[pageName]
-          webpackMap[pageName] = {}
-          webpackMap[pageName].js = []
-          webpackMap[pageName].css = []
-          ;[].concat(pageInfo.assets.forEach(mapAsset))
-          /**
-           * 根据资源类型，将其映射(map)到对应的数组中
-           * @param assetsPath  资源路径
-           */
-          function mapAsset (assetsPath) {
-            if (path.extname(assetsPath) === '.js') {
-              // 绝对路径 = publicPath +  assetsPath
-              webpackMap[pageName].js.push(map.publicPath + assetsPath)
-            } else if (path.extname(assetsPath) === '.css') {
-              webpackMap[pageName].css.push(map.publicPath + assetsPath)
-            }
-          }
-        })
-        const jsonPath = path.resolve(__dirname, './.ns-release/.ns-resource-map')
-        utils.mkdirsSync(jsonPath)
-        require('fs').writeFileSync(path.resolve(jsonPath, 'resource-map.json'),
-          JSON.stringify(webpackMap))
-      })
-    })
   },
   chainWebpack: config => {
     // 路径别名
@@ -158,18 +107,10 @@ module.exports = {
         return args
       })
     }
-
-    config.plugins.delete('html')
-    config.plugins.delete('preload')
-    config.plugins.delete('prefetch')
   },
   devServer: {
-    headers: {
-      'Access-Control-Allow-Origin': '*'
-    },
-    disableHostCheck: true,
-    // host: true,
-    port: 8080,
+    // host: 'localhost',
+    // port: 8888
     proxy: {
       // 配置跨域
       '/api': {
@@ -189,20 +130,6 @@ module.exports = {
         // 注意：试过不能使用别名路径
         path.resolve(__dirname, './src/assets/css/entry.less')
       ]
-    }
-  },
-  pages: {
-    index: {
-      entry: 'src/pages/index/index.js',
-      filename: 'index.html',
-      // template 中的 title 标签需要是 <title><%= htmlWebpackPlugin.options.title %></title>
-      chunks: ['chunk-vendors', 'chunk-common', 'index']
-    },
-    ui: {
-      entry: 'src/pages/ui/index.js',
-      filename: 'ui.html',
-      // template 中的 title 标签需要是 <title><%= htmlWebpackPlugin.options.title %></title>
-      chunks: ['chunk-vendors', 'chunk-common', 'ui']
     }
   }
 }

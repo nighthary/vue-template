@@ -24,4 +24,3 @@ package-lock.json
 yarn.lock
 .idea/**
 .DS_Store
-.ns-release

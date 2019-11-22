@@ -1,18 +1,15 @@
 import Vue from 'vue'
 import App from '@/App.vue'
 
+import router from '@/router/router'
+import store from '@/store'
+
 import '@/common'
 
 Vue.config.productionTip = false
 
-export default function (store, router, template) {
-  /* eslint-disable no-new */
-  new Vue({
-    el: '#app',
-    router,
-    store,
-    // template: template || '<app/>',
-    // components: { App },
-    render: render => render(App)
-  })
-}
+new Vue({
+  router,
+  store,
+  render: h => h(App)
+}).$mount('#app')
