@@ -2,7 +2,7 @@
   "apps": [
     {
       "name": "vue-template",
-      "script": "./www",
+      "script": "./start.js",
       "watch": true,
       "node_args": "--harmony",
       "merge_logs": false,
