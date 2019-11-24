@@ -43,7 +43,8 @@
     "gulp-notify": "^3.2.0",
     "gulp": "^4.0.2",
     "gulp-babel": "^8.0.0",
-    "gulp-clean": "^0.4.0"
+    "gulp-clean": "^0.4.0",
+    "gulp-js-encrypt": "^1.0.0"
   },
   "buildPath": "ns-release"
 }

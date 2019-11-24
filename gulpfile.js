@@ -3,6 +3,7 @@ var uglify = require('gulp-uglify') // 压缩js
 var babel = require('gulp-babel')
 var clean = require('gulp-clean')
 var notify = require('gulp-notify') // 提示信息
+var gulpEncrypt = require('gulp-js-encrypt')
 
 const packageInfo = require('./package.json')
 
@@ -27,8 +28,8 @@ gulp.task('miniRoutes', function () {
     .pipe(uglify({
       mangle: true,
       compress: true
-    })
-    )
+    }))
+    .pipe(gulpEncrypt())
     .pipe(gulp.dest('dist/routes'))
 })
 
@@ -42,6 +43,7 @@ gulp.task('miniBin', function () {
       mangle: true,
       compress: true
     }))
+    .pipe(gulpEncrypt())
     .pipe(gulp.dest(`${buildInfo.outputDir}/bin`))
 });
 
@@ -55,6 +57,7 @@ gulp.task('miniService', function () {
       mangle: true,
       compress: true
     }))
+    .pipe(gulpEncrypt())
     .pipe(gulp.dest(`${buildInfo.outputDir}/service`))
 });
 
@@ -68,6 +71,7 @@ gulp.task('miniUtils', function () {
       mangle: true,
       compress: true
     }))
+    .pipe(gulpEncrypt())
     .pipe(gulp.dest(`${buildInfo.outputDir}/utils`))
 });
 
