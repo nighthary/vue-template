@@ -4,7 +4,7 @@
 'use strict'
 const packageInfo = require('../package.json')
 // 资源表
-const resourceMap = require(`../${packageInfo.buildPath}/.ns-resource-map/resource-map.json`)
+const resourceMap = require(`../${packageInfo.buildPath}/ns-resource-map/resource-map.json`)
 
 module.exports = function (pageName) {
   var linkList = ``

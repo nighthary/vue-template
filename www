@@ -1,0 +1,10 @@
+echo '开始安装依赖(npm i)'
+npm i
+echo '安装依赖完成，开始构建(npm run build)'
+npm run build
+echo '前端构建完成，构建后端代码/打包(npm run node-build)'
+npm run node-build
+echo '代码全部构建完成'
+echo '最终输出代码在dist目录，启动前确保全局安装了pm2(npm i pm2 -g)'
+echo '运行pm2 start start.js 启动项目'
+# pm2 start start.js

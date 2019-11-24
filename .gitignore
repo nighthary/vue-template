@@ -25,3 +25,4 @@ yarn.lock
 .idea/**
 .DS_Store
 .ns-release
+ns-release

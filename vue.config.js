@@ -1,6 +1,7 @@
 const webpack = require('webpack')
 const path = require('path')
 const utils = require('./build/utils.js')
+const packageInfo = require('./package.json')
 
 const env = utils.getEnv()
 const getConfig = require('./build/config').getConfig
@@ -119,7 +120,7 @@ module.exports = {
             }
           }
         })
-        const jsonPath = path.resolve(__dirname, './.ns-release/.ns-resource-map')
+        const jsonPath = path.resolve(__dirname, `./${packageInfo.buildPath}/ns-resource-map`)
         utils.mkdirsSync(jsonPath)
         require('fs').writeFileSync(path.resolve(jsonPath, 'resource-map.json'),
           JSON.stringify(webpackMap))
