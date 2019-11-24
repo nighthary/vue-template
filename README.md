@@ -1,2 +1,2 @@
 # vue-template
-vue-template
+vue template visited with nodejs
