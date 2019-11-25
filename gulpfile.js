@@ -46,6 +46,6 @@ gulp.task('copyNodeModule', function () {
     .pipe(gulp.dest(`${buildInfo.outputDir}/node_modules`));
 })
 
-gulp.task('copy', gulp.series('copyBase', 'copyNode', 'copyFront', 'copyGulp','copyNodeModule'), function () {
+gulp.task('copy', gulp.series('copyBase', 'copyNode', 'copyFront', 'copyGulp'), function () {
   return gulp.pipe(notify({ message: '拷贝完成' }));
 })

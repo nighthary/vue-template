@@ -1,8 +1,15 @@
-echo '云端部署，node代码不需要压缩处理'
 echo '开始安装依赖(npm i)'
 npm i
 echo '安装依赖完成，开始构建(npm run build),测试环境可以执行(npm run test)--浏览器可以查看代码映射'
 npm run build
+echo '前端构建完成，整理node代码(npm run copy)'
+npm run clean
+npm run copy
+echo '代码copy完成'
+cd ./ns-release-dist
+echo '执行node代码压缩混淆(npm run mini)'
+npm i
+npm run mini
 echo '安装pm2（npm i pm2 -g)'
 npm i pm2 -g
 echo '删除PM2进程'

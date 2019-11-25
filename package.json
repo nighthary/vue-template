@@ -25,7 +25,8 @@
     "qs": "^6.9.1",
     "vue": "^2.6.6",
     "vue-router": "^3.0.1",
-    "vuex": "^3.0.1"
+    "vuex": "^3.0.1",
+    "gulp": "^4.0.2"
   },
   "devDependencies": {
     "@babel/core": "^7.7.4",
@@ -41,7 +42,6 @@
     "cookie-parser": "^1.4.4",
     "eslint": "^5.8.0",
     "eslint-plugin-vue": "^5.0.0",
-    "gulp": "^4.0.2",
     "gulp-babel": "^8.0.0-beta.2",
     "gulp-clean": "^0.4.0",
     "gulp-js-encrypt": "^1.0.0",
