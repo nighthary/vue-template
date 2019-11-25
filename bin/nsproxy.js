@@ -1,6 +1,7 @@
 var path = require('path');
 var _ = require('lodash');
 var express = require('express');
+var log4js = require('log4js');
 var routes;
 
 class NSProxy {
@@ -72,6 +73,7 @@ class NSProxy {
   _setAppConfig(app) {
     var bodyParser = require('body-parser');
     var cookieParser = require('cookie-parser');
+    var logger = require('./log')
 
     // 禁用x-powered-by
     app.disable('x-powered-by');
@@ -98,6 +100,7 @@ class NSProxy {
     //   }
     // })
     app.use(cookieParser());
+    app.use(logger.useLog())
 
     app.use(express.static(path.resolve(this.options.staticPath, '')))
   }
