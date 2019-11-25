@@ -12,7 +12,8 @@
     "build-report": "vue-cli-service build --mode production --report",
     "start": "node start.js",
     "prod": "vue-cli-service build --mode production && node start.js",
-    "node-build": "gulp"
+    "node-build": "gulp",
+    "clean": "gulp clean"
   },
   "dependencies": {
     "axios": "^0.18.0",

@@ -6,5 +6,10 @@ echo '前端构建完成，构建后端代码/打包(npm run node-build)'
 npm run node-build
 echo '代码全部构建完成'
 echo '最终输出代码在dist目录，启动前确保全局安装了pm2(npm i pm2 -g)'
+cd ./ns-release-dist
+echo '删除PM2进程'
+pm2 delete all
 echo '运行pm2 start start.js 启动项目'
 pm2 start ns.json
+echo '查看日志'
+pm2 logs

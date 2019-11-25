@@ -8,13 +8,13 @@ var gulpEncrypt = require('gulp-js-encrypt')
 const packageInfo = require('./package.json')
 
 const buildInfo = {
-  outputDir: packageInfo.name + '-dist'
+  outputDir: packageInfo.buildPath + '-dist'
 }
 /**
  * 清空目标目录
  */
 gulp.task('clean', function () {
-  return gulp.src([`${buildInfo.outputDir}/`, `${packageInfo.buildPath}/`], {
+  return gulp.src([`${buildInfo.outputDir}/`], {
     allowEmpty: true
   }).pipe(clean())
 })
