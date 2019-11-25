@@ -1,5 +1,5 @@
 echo '开始安装依赖(npm i)'
-npm i
+#npm i
 echo '安装依赖完成，开始构建(npm run build)'
 npm run build
 echo '前端构建完成，构建后端代码/打包(npm run node-build)'

@@ -9,3 +9,7 @@ NS.onGet('/', function(req, res) {
 NS.onGet('/ui', function(req, res) {
   res.send(render('ui'))
 })
+
+NS.onGet('/check', function(req, res) {
+  res.send(200)
+})
