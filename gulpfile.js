@@ -20,7 +20,7 @@ gulp.task('clean', function () {
 })
 
 gulp.task('miniRoutes', function () {
-  return gulp.src(['routes/*.js'])
+  return gulp.src(['routes/*.js'], { allowEmpty: true })
     .pipe(babel({ // 编译es6语法
       presets: ['@babel/env'],
       plugins: []
@@ -34,7 +34,7 @@ gulp.task('miniRoutes', function () {
 })
 
 gulp.task('miniBin', function () {
-  return gulp.src(['bin/*.js'])
+  return gulp.src(['bin/*.js'], { allowEmpty: true })
     .pipe(babel({ // 编译es6语法
       presets: ['@babel/env'],
       plugins: []
@@ -48,7 +48,7 @@ gulp.task('miniBin', function () {
 });
 
 gulp.task('miniService', function () {
-  return gulp.src(['service/*.js'])
+  return gulp.src(['service/*.js'], { allowEmpty: true })
     .pipe(babel({ // 编译es6语法
       presets: ['@babel/env'],
       plugins: []
@@ -62,7 +62,7 @@ gulp.task('miniService', function () {
 });
 
 gulp.task('miniUtils', function () {
-  return gulp.src(['utils/*.js'])
+  return gulp.src(['utils/*.js'], { allowEmpty: true })
     .pipe(babel({ // 编译es6语法
       presets: ['@babel/env'],
       plugins: []
@@ -81,7 +81,7 @@ gulp.task('copyFront', function () {
 })
 
 gulp.task('copyBase', function () {
-  return gulp.src(['config.json', 'package.json', 'start.js'])
+  return gulp.src(['config.json', 'package.json', 'start.js', 'ns.json'])
     .pipe(gulp.dest(`${buildInfo.outputDir}/`));
 })
 gulp.task('copyNodeModule', function () {
