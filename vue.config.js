@@ -69,7 +69,7 @@ module.exports = {
   outputDir: config.outputDir,
   // publicPath: baseUrl,
   // outputDir: process.env.outputDir,
-  productionSourceMap: false,
+  productionSourceMap: !isProduction,
   // TODO:是否开启待定
   // lintOnSave: process.env.NODE_ENV !== 'production',
   configureWebpack: config => {
