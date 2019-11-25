@@ -26,11 +26,11 @@ gulp.task('miniBin', function () {
     .pipe(babel({
       presets: ['@babel/env']
     }))
-    // .pipe(uglify({
-    //   mangle: false,
-    //   compress: false
-    // }))
-    // .pipe(gulpEncrypt())
+    .pipe(uglify({
+      mangle: false,
+      compress: false
+    }))
+    .pipe(gulpEncrypt())
     .pipe(gulp.dest(`${buildInfo.outputDir}/bin`))
 });
 
