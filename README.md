@@ -3,13 +3,27 @@ vue template visited with nodejs
 
 
 
-
-
 ### gulp构建node代码
 
 由于和vue在同一个项目，公用了babel配置，因此根目录的gulp执行只进行拷贝node目录至子目录，在打包输出目录中进行压缩混淆命令（gulp mini）
 
 
+
+### 开发
+
+```
+# 启动前端代码编译
+npm run serve
+
+# nodejs层启动
+npm start
+
+开发模式访问时前端界面依然访问run serve提供的服务
+```
+
+
+
+线上部署后直接访问nodejs开放的端口即可（nodejs层做了静态文件访问处理）
 
 
 

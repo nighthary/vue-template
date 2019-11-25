@@ -99,7 +99,7 @@ gulp.task('copyFront', function () {
 })
 
 gulp.task('copyBase', function () {
-  return gulp.src(['config.json', 'package.json', 'start.js', 'ns.json', 'gulpfile.js'])
+  return gulp.src(['config.json', 'package.json', 'start.js', 'gulpfile.js'])
     .pipe(gulp.dest(`${buildInfo.outputDir}/`));
 })
 gulp.task('copyNodeModule', function () {
