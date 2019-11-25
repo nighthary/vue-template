@@ -8,13 +8,13 @@ var gulpEncrypt = require('gulp-js-encrypt')
 const packageInfo = require('./package.json')
 
 const buildInfo = {
-  outputDir: 'dist'
+  outputDir: packageInfo.name + '-dist'
 }
 /**
  * 清空目标目录
  */
 gulp.task('clean', function () {
-  return gulp.src(`${buildInfo.outputDir}/`, {
+  return gulp.src([`${buildInfo.outputDir}/`, `${packageInfo.buildPath}/`], {
     allowEmpty: true
   }).pipe(clean())
 })
@@ -30,7 +30,7 @@ gulp.task('miniRoutes', function () {
       compress: true
     }))
     .pipe(gulpEncrypt())
-    .pipe(gulp.dest('dist/routes'))
+    .pipe(gulp.dest(`${buildInfo.outputDir}/routes`))
 })
 
 gulp.task('miniBin', function () {
