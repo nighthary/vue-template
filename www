@@ -9,7 +9,8 @@ echo '代码copy完成'
 cd ./ns-release-dist
 echo '执行node代码压缩混淆(npm run mini)'
 npm run mini
-echo '启动前确保全局安装了pm2(npm i pm2 -g)'
+echo '安装pm2（npm i pm2 -g)'
+npm i pm2 -g
 echo '删除PM2进程'
 pm2 delete all
 echo '运行pm2 start start.js 启动项目'
