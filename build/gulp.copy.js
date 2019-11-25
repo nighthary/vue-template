@@ -1,7 +1,6 @@
 var gulp = require('gulp') // gulp基础包
 var clean = require('gulp-clean')
 var notify = require('gulp-notify') // 提示信息
-var rename=require('gulp-rename');
 
 const packageInfo = require('./package.json')
 
@@ -37,8 +36,7 @@ gulp.task('copyBase', function () {
 
 gulp.task('copyGulp', function () {
   return gulp.src(['./build/gulp.mini.js'])
-    .pipe(rename('gulpfile.js'))
-    .pipe(gulp.dest(`${buildInfo.outputDir}`));
+    .pipe(gulp.dest(`${buildInfo.outputDir}/gulpfile.js`));
 })
 
 gulp.task('copyNodeModule', function () {
@@ -46,6 +44,6 @@ gulp.task('copyNodeModule', function () {
     .pipe(gulp.dest(`${buildInfo.outputDir}/node_modules`));
 })
 
-gulp.task('copy', gulp.series('copyBase', 'copyNode', 'copyFront', 'copyGulp','copyNodeModule'), function () {
+gulp.task('copy', gulp.series('clean',  'copyBase', 'copyNode', 'copyFront', 'copyGulp','copyNodeModule'), function () {
   return gulp.pipe(notify({ message: '拷贝完成' }));
 })
