@@ -1,13 +1,13 @@
-echo '云端部署，node代码不需要压缩处理'
-echo '开始安装依赖(npm i)'
-npm i
-echo '安装依赖完成，开始构建(npm run build),测试环境可以执行(npm run test)--浏览器可以查看代码映射'
+echo "云端部署，node代码不需要压缩处理"
+echo "开始安装依赖"
+npm install
+echo "安装依赖完成，开始构建,测试环境可以执行--浏览器可以查看代码映射"
 npm run build
-echo '安装pm2（npm i pm2 -g)'
+echo "安装pm2"
 npm i pm2 -g
-echo '删除PM2进程'
+echo "删除PM2进程"
 pm2 delete all
-echo '运行pm2 start start.js 启动项目'
+echo "启动项目"
 pm2 start start.js
-echo '查看日志'
+echo "查看日志"
 pm2 logs
