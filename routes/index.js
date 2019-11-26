@@ -11,10 +11,13 @@ NS.onGet('/ui', function(req, res) {
 })
 
 NS.onGet('/check', function(req, res) {
-  res.send(200)
+  res.sendStatus(200)
 })
 
 NS.onGet('/test', function(req, res) {
-  console.info(123213)
-  res.send(200)
+  console.info('info...')
+  console.error('error...')
+  console.warn('warn...')
+  console.log('测试console.log')
+  res.sendStatus(200)
 })

@@ -73,7 +73,6 @@ class NSProxy {
   _setAppConfig(app) {
     var bodyParser = require('body-parser');
     var cookieParser = require('cookie-parser');
-    var logger = require('./log')
 
     // 禁用x-powered-by
     app.disable('x-powered-by');
@@ -100,9 +99,22 @@ class NSProxy {
     //   }
     // })
     app.use(cookieParser());
-    app.use(logger.useLog())
 
     app.use(express.static(path.resolve(this.options.staticPath, '')))
+
+    this._setLogger(app)
+  }
+
+  _setLogger(app) {
+    const Logger = require('./log');
+    const logger = new Logger({
+      appName: this.options.appName,
+      logPath: this.options.logPath
+    })
+    logger.use(app);
+    logger.overwrideConsole();
+
+    NS.logger = logger.getLogger();
   }
 
   addRouter(router) {
