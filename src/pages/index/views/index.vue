@@ -1,6 +1,7 @@
 <template>
   <div class="index-index">
     我是index主页1
+    <router-link :to="'/test'">totest</router-link>
   </div>
 </template>
 <script>

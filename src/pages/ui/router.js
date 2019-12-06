@@ -4,13 +4,26 @@ import Router from 'vue-router'
 Vue.use(Router)
 
 export default new Router({
-  mode: 'hash',
-  base: process.env.BASE_URL,
+  mode: 'history',
+  base: '/ui',
   routes: [
     {
       path: '/',
-      name: 'index',
-      component: () => import('./views/index')
+      name: 'uiIndex',
+      component: () => import('./views/index'),
+      meta: {
+        text: 'index view',
+        to: '/testa'
+      }
+    },
+    {
+      path: '/testa',
+      name: 'testa',
+      component: () => import('./views/index'),
+      meta: {
+        text: 'testa view',
+        to: '/'
+      }
     }
   ]
 })

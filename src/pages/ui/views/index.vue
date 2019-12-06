@@ -1,6 +1,6 @@
 <template>
   <div class="ui-index">
-    我是ui主页
+    我是{{$route.meta.text}}<router-link :to="$route.meta.to">PageJump</router-link>
   </div>
 </template>
 <script>
