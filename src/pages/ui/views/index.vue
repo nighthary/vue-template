@@ -1,11 +1,18 @@
 <template>
   <div class="ui-index">
-    我是{{$route.meta.text}}<router-link :to="$route.meta.to">PageJump</router-link>
+    我是{{$route.meta.text}}
+    <router-link :to="$route.meta.to">PageJump</router-link>
+    <div @click="goHome">跳转至新入口-HOME</div>
   </div>
 </template>
 <script>
 export default {
-  name: 'ui-index'
+  name: 'ui-index',
+  methods: {
+    goHome() {
+      location.href = '/'
+    }
+  }
 }
 </script>
 <style lang="less" scoped>
