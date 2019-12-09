@@ -12,7 +12,8 @@
     "build-report": "vue-cli-service build --mode production --report",
     "start": "node start.js",
     "prod": "vue-cli-service build --mode production && node start.js",
-    "nbuild": "webpack --config webpack.config.js"
+    "build:server": "webpack --config webpack.config.js",
+    "build:pack": "gulp"
   },
   "dependencies": {
     "axios": "^0.18.0",
@@ -40,6 +41,9 @@
     "cookie-parser": "^1.4.4",
     "eslint": "^5.8.0",
     "eslint-plugin-vue": "^5.0.0",
+    "gulp": "^4.0.2",
+    "gulp-clean": "^0.4.0",
+    "gulp-notify": "^3.2.0",
     "less": "^3.0.4",
     "less-loader": "^4.1.0",
     "style-resources-loader": "^1.2.1",

@@ -3,18 +3,20 @@ npm i
 echo '安装依赖完成，开始构建,测试环境可以执行--浏览器可以查看代码映射'
 npm run build
 echo '前端构建完成，整理node代码'
-npm run clean
-npm run copy
-echo '代码copy完成'
+echo 'nodejs代码打包'
+npm run build:server
+echo 'nodejs代码打包，打包代码开始拷贝'
+npm run build:pack
+echo '打包代码拷贝完成'
 cd ./ns-release-dist
-echo '执行node代码压缩混淆'
+echo '安装依赖'
 npm i
-npm run mini
-echo '安装pm2'
+echo '安装依赖完成，安装pm2'
 npm i pm2 -g
-echo '删除PM2进程'
-pm2 delete all
+echo '删除PM2(vue-template)进程'
+pm2 delete vue-template
 echo '启动项目'
-pm2 start start.js
+pm2 start ns.json
+pm2 list
 echo '查看日志'
 pm2 logs

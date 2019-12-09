@@ -1,0 +1,12 @@
+[
+  {
+    "name": "vue-template",
+    "script": "./start.js",
+    "cwd": "./",
+    "instances": 1,
+    "pid_file": "/var/logs/node/vue-template/app.pid",
+    "error_file": "/var/logs/node/vue-template/app-err.log",
+    "out_file": "/var/logs/node/vue-template/app.log",
+    "log_date_format": "YYYY-MM-DD HH:mm:ss"
+  }
+]
