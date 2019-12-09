@@ -1,28 +1,39 @@
 
-const NS = global.NS
-const render = require('../service/renderView.js')
+const express = require('express');
+const router = express.Router();
 
-NS.onGet('/*', function(req, res, next) {
+const render = require('../service/renderView.js');
+const NS = global.NS;
+const test = require('./test');
+router.use(test);
+
+router.get('*', function(req, res, next) {
   const nowPath = req.path.split('/')[1]
-  if(NS.pages.includes(nowPath) || req.path.startsWith('/api')) {
+  if(NS.pages.includes(nowPath) || req.path.startsWith('/api') || req.path.startsWith('/static')) {
     next()
   } else {
     res.send(render('index'))
   }
 })
 
-NS.onGet('/ui*', function(req, res) {
+router.get('/', function(req, res, next) {
+  res.send(render('index'))
+})
+
+router.get('/ui*', function(req, res) {
   res.send(render('ui'))
 })
 
-NS.onGet('/check', function(req, res) {
+router.get('/check', function(req, res) {
   res.sendStatus(200)
 })
 
-NS.onGet('/api/test1', function(req, res) {
+router.get('/api/test1', function(req, res) {
   console.info('info...')
   console.error('error...')
   console.warn('warn...')
   console.log('测试console.log')
   res.sendStatus(200)
 })
+
+module.exports = router

@@ -2,7 +2,7 @@ var log4js = require('log4js');
 
 class Logger {
   constructor(options) {
-    this.logPath = options.logPath || '/var/nodejs/logs'
+    this.logPath = options.logPath || '/var/logs/nodejs'
     this.appName = options.appName
     this.configure()
   }

@@ -1,16 +1,8 @@
+/**
+ * 全局babel配置
+ * 对前后端代码同时生效，请注意配置
+ */
 module.exports = {
-  presets: [
-    [
-      '@vue/app',
-      {
-        debug: true,
-        polyfills: [
-          'es6.promise',
-          'es6.array.find-index',
-          'es7.array.includes',
-          'es6.string.includes'
-        ]
-      }
-    ]
-  ]
+  presets: [],
+  plugins: []
 }

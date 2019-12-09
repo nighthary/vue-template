@@ -1,18 +1,15 @@
 
 var NSProxy = require('./nsproxy');
-var routes = require('./routes');
 
 const packageInfo = require('../package.json')
-const resourceMap = require(`../${packageInfo.buildPath}/ns-resource-map/resource-map.json`)
+const buildPath = packageInfo.buildPath
+const resourceMap = require(`../${buildPath}/ns-resource-map/resource-map.json`)
 
 var NS = {};
 
 var nsProxy = new NSProxy();
 
 NS.init = nsProxy.init.bind(nsProxy);
-
-// 挂载路由
-routes.mountRoutes(NS, nsProxy);
 
 global.NS = NS;
 
