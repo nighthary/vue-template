@@ -1,0 +1,14 @@
+[
+  {
+    "name": "vue-template",
+    "script": "./node-dist/bundle.js",
+    "cwd": "./",
+    "instances": 1,
+    "exec_mode" : "cluster_mode",
+    "pid_file": "/var/logs/nodepm2/vue-template/app.pid",
+    "error_file": "/var/logs/nodepm2/vue-template/app-err.log",
+    "out_file": "/var/logs/nodepm2/vue-template/app.log",
+    "log_date_format": "YYYY-MM-DD HH:mm:ss",
+    "watch": true
+  }
+]
