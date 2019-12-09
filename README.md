@@ -1,5 +1,6 @@
 # vue-template
 vue template visited with nodejs
+package nodejs code with webpack
 
 ### 开发注意事项
 
