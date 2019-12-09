@@ -9,6 +9,7 @@ class Logger {
 
   configure() {
     log4js.configure({
+      pm2: true,
       appenders: {
         ruleConsole: { type: 'console' },
         ruleFile: {
