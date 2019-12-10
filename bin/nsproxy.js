@@ -92,8 +92,8 @@ class NSProxy {
   }
 
   _createRoutes(app) {
-    const routes = require('../routes');
-    app.use(routes);
+    const router = require('../routes');
+    app.use(router);
   }
 }
 

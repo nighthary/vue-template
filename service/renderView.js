@@ -31,6 +31,7 @@ module.exports = function (pageName) {
     <title></title>
     <meta name='keywords' content=''/>
     <meta name='description' content=''/>
+    <link rel="shortcut icon" type="image/x-icon" href="/static/${packageInfo.name}/favicon.ico" />
     ${linkList}
     <script type="text/javascript">
      

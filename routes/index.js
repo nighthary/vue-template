@@ -4,12 +4,15 @@ const router = express.Router();
 
 const render = require('../service/renderView.js');
 const NS = global.NS;
+
 const test = require('./test');
 router.use(test);
 
+// 路由渲染时过滤的路由
+const excludePath = [...NS.pages, '/api', 'favicon.ico']
 router.get('*', function(req, res, next) {
   const nowPath = req.path.split('/')[1]
-  if(NS.pages.includes(nowPath) || req.path.startsWith('/api') || req.path.startsWith('/static')) {
+  if(excludePath.includes(nowPath)) {
     next()
   } else {
     res.send(render('index'))
