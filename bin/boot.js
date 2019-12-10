@@ -1,5 +1,6 @@
 
 var http = require('http');
+var net = require('net');
 
 var port;
 /**
@@ -16,6 +17,7 @@ function normalizePort(val) {
     // port number
     return port;
   }
+
   return false;
 }
 
@@ -59,43 +61,65 @@ function onListening(server) {
   console.log('Listening on ' + bind);
 }
 
+// 检测端口是否被占用
+function portIsOccupied(port, cb) {
+  const server = net.createServer().listen(port)
+  server.on('listening', () => {
+    console.log(`the server will running on port ${port}`)
+    server.close()
+    cb(null, port)
+    console.log('port', port)
+  })
+
+  server.on('error', (err) => {
+    if (err.code === 'EADDRINUSE') {
+      portIsOccupied(port + 10, cb)
+      console.log(`this port ${port} is occupied.try another.`)
+    } else {
+      cb(err)
+    }
+  })
+}
+
 /**
  *
  * @param app app实例
  * @param options 可选参数
  * @returns {Promise}
  */
-module.exports = function (app, options) {
+module.exports = async function (app, options) {
   /**
    * Get port from environment and store in Express.
    */
 
   port = normalizePort(process.env.PORT || options.port || '3000');
-  app.set('port', port);
-
-  /**
-   * Create HTTP server.
-   */
-
-  var server = http.createServer(app);
 
   /**
    * Listen on provided port, on all network interfaces.
    */
   return new Promise((resolve, reject) => {
     'use strict';
-    server.listen(port);
-    server.on('error', e => {
-      onError(e);
-      reject(e);
-    });
-    server.on('listening', x => {
-      onListening(server);
-      resolve({
-        port: port
+
+    portIsOccupied(port, function (err, nport) {
+      if (err) {
+        return console.log(err);
+      }
+      port = nport;
+      app.set('port', port);
+
+      var server = http.createServer(app);
+
+      server.listen(port);
+      server.on('error', e => {
+        onError(e);
+        reject(e);
       });
-    });
+      server.on('listening', x => {
+        onListening(server);
+        resolve({
+          port: port
+        });
+      });
+    })
   });
-
 };
-
