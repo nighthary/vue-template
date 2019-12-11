@@ -31,7 +31,7 @@ gulp.task('copyFront', function () {
 })
 
 gulp.task('copyBase', function () {
-  return gulp.src(['config.json', 'package.json', 'start.js'])
+  return gulp.src(['config.json', 'package.json', 'start.js', 'ns.json'])
     .pipe(gulp.dest(`${buildInfo.outputDir}/`));
 })
 

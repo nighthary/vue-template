@@ -30,7 +30,7 @@ gulp.task('copyFront', function () {
 })
 
 gulp.task('copyBase', function () {
-  return gulp.src(['config.json', 'package.json', 'start.js'])
+  return gulp.src(['config.json', 'package.json', 'start.js', 'ns.json'])
     .pipe(gulp.dest(`${buildInfo.outputDir}/`));
 })
 
@@ -44,6 +44,6 @@ gulp.task('copyNodeModule', function () {
     .pipe(gulp.dest(`${buildInfo.outputDir}/node_modules`));
 })
 
-gulp.task('copy', gulp.series('clean',  'copyBase', 'copyNode', 'copyFront', 'copyGulp','copyNodeModule'), function () {
+gulp.task('copy', gulp.series('clean', 'copyBase', 'copyNode', 'copyFront', 'copyGulp', 'copyNodeModule'), function () {
   return gulp.pipe(notify({ message: '拷贝完成' }));
 })

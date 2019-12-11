@@ -13,8 +13,9 @@ npm run mini
 echo '安装pm2'
 npm i pm2 -g
 echo '删除PM2进程'
-pm2 delete all
+pm2 delete vue-template
 echo '启动项目'
-pm2 start start.js
+pm2 start ns.json
+pm2 list
 echo '查看日志'
 pm2 logs

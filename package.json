@@ -17,18 +17,16 @@
     "copy": "gulp copy"
   },
   "dependencies": {
-    "@babel/runtime": "^7.7.4",
     "axios": "^0.18.0",
     "dayjs": "^1.8.17",
     "jquery": "^3.3.1",
-    "log4js": "^6.1.0",
     "qs": "^6.9.1",
     "vue": "^2.6.6",
     "vue-router": "^3.0.1",
-    "vuex": "^3.0.1",
-    "gulp": "^4.0.2"
+    "vuex": "^3.0.1"
   },
   "devDependencies": {
+    "log4js": "^6.1.0",
     "@babel/core": "^7.7.4",
     "@babel/plugin-transform-runtime": "^7.7.4",
     "@babel/preset-env": "^7.7.4",
@@ -42,6 +40,7 @@
     "cookie-parser": "^1.4.4",
     "eslint": "^5.8.0",
     "eslint-plugin-vue": "^5.0.0",
+    "gulp": "^4.0.2",
     "gulp-babel": "^8.0.0-beta.2",
     "gulp-clean": "^0.4.0",
     "gulp-js-encrypt": "^1.0.0",
