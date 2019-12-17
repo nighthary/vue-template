@@ -10,7 +10,7 @@ export default {
   name: 'ui-index',
   methods: {
     goHome() {
-      location.href = '/'
+      location.href = `/${process.env.PROJECT_NAME}`
     }
   }
 }

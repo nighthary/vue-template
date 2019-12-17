@@ -33,7 +33,7 @@ class Logger {
       },
       categories: {
         default: { appenders: ['ruleConsole', 'ruleFile'], level: 'info' },
-        error: { appenders: ['errorFile', 'ruleFile'], level: 'error' }
+        error: { appenders: ['ruleConsole', 'errorFile'], level: 'error' }
       }
     });
   }

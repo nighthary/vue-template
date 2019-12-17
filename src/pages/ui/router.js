@@ -2,10 +2,10 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 Vue.use(Router)
-
+const projectName = process.env.PROJECT_NAME
 export default new Router({
   mode: 'history',
-  base: '/ui',
+  base: `/${projectName}/ui`,
   routes: [
     {
       path: '/',

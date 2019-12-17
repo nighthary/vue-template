@@ -92,6 +92,10 @@ module.exports = {
       'windows.jQuery': 'jquery'
     }))
 
+    config.plugins.push(new webpack.DefinePlugin({
+      'process.env.PROJECT_NAME': JSON.stringify(`${packageInfo.projectName}`)
+    }))
+
     config.plugins.push(function () {
       // 数据处理 用于生成 webpackMap
       this.plugin('done', function (map) {
@@ -161,8 +165,10 @@ module.exports = {
     }
 
     config.plugins.delete('html')
-    config.plugins.delete('preload')
-    config.plugins.delete('prefetch')
+    // 移除 prefetch 插件
+    config.plugins.delete('prefetch-index')
+    // 移除 preload 插件
+    config.plugins.delete('preload-index');
   },
   devServer: {
     headers: {

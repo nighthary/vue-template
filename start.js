@@ -4,8 +4,7 @@ var packageInfo = require('./package.json')
 NS.init({
   appDir: __dirname,
   appName: packageInfo.name,
-  staticPath: packageInfo.buildPath,
-  logPath: '/var/logs/nodejs/'
+  staticPath: packageInfo.buildPath
 }).catch(e => {
   console.error(e);
 })

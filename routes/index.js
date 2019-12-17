@@ -1,42 +1,26 @@
+'use strict';
 
-const express = require('express');
-const router = express.Router();
+const NS = global.NS
+const render = require('../service/renderView.js')
 
-const render = require('../service/renderView.js');
-const NS = global.NS;
-
-const test = require('./test');
-router.use(test);
-
-// 路由渲染时过滤的路由
-const excludePath = [...NS.pages, '/api', 'favicon.ico']
-router.get('*', function(req, res, next) {
-  const nowPath = req.path.split('/')[1]
-  if(excludePath.includes(nowPath)) {
+NS.onGet('*', function(req, res, next) {
+  console.log('接口请求', req.originalUrl)
+  const nowPath = req.path;
+  if(NS.Utils.isExPath(nowPath)) {
     next()
   } else {
     res.send(render('index'))
   }
 })
 
-router.get('/', function(req, res, next) {
+NS.onGet('/', function(req, res, next) {
   res.send(render('index'))
 })
 
-router.get('/ui*', function(req, res) {
+NS.onGet('/ui*', function(req, res, next) {
   res.send(render('ui'))
 })
 
-router.get('/check', function(req, res) {
+NS.onGet('/api/check', function(req, res) {
   res.sendStatus(200)
 })
-
-router.get('/api/test1', function(req, res) {
-  console.info('info...')
-  console.error('error...')
-  console.warn('warn...')
-  console.log('测试console.log')
-  res.sendStatus(200)
-})
-
-module.exports = router

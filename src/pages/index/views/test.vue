@@ -39,7 +39,7 @@
 export default {
   methods: {
     goUI() {
-      location.href = '/ui'
+      location.href = `/${process.env.PROJECT_NAME}/ui`
     }
   }
 }

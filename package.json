@@ -56,5 +56,6 @@
     "webpack-cli": "^3.3.10",
     "webpack-node-externals": "^1.7.2"
   },
-  "buildPath": "ns-release"
+  "buildPath": "ns-release",
+  "projectName": "vue-h5-node"
 }

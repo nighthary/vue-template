@@ -9,6 +9,17 @@
     "error_file": "/var/logs/nodepm2/vue-template/app-err.log",
     "out_file": "/var/logs/nodepm2/vue-template/app.log",
     "log_date_format": "YYYY-MM-DD HH:mm:ss",
-    "watch": true
+    "env": {
+      "NODE_ENV": "production"
+    },
+    "env_test": {
+      "NODE_ENV": "test"
+    },
+    "env_sandbox": {
+      "NODE_ENV": "sandbox"
+    },
+    "env_production": {
+      "NODE_ENV": "production"
+    }
   }
 ]

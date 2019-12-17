@@ -9,14 +9,20 @@ var path = require('path');
  * */
 const HTTP_TYPE = ['get', 'post', 'put', 'options', 'head', 'delete', 'trace', 'connect', 'patch'];
 
-function mountRoutes(NS, nsProxy) {
+function mountRoutes(NS, nsProxy, projectName) {
   // 给NS挂上 onXXX路由方法
   HTTP_TYPE.forEach(type => {
     var name = type.replace(/(.)(.*)/, (all, $1, $2) => {
       return $1.toUpperCase() + $2;
     });
     NS['on' + name] = function () {
-      nsProxy.addRouter({ type: type, filters: _.toArray(arguments) });
+      let arr = _.toArray(arguments);
+      let arg0 = arr[0] || ''
+      // 所有接口请求路由添加前缀（仅部署环境）
+      // if(arg0.startsWith('/api')) {
+      arr[0] = `/${projectName}${arg0}`
+      // }
+      nsProxy.addRouter({ type: type, filters: arr });
     }
   });
   // 404
